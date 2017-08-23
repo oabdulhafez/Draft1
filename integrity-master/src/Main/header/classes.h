@@ -53,6 +53,8 @@ struct Landmark
 {
 	Eigen::Matrix<double, 5, 1> pose;
 	int  rep;
+	int  expected;
+	int expected_now;
 
 	Landmark();
 };

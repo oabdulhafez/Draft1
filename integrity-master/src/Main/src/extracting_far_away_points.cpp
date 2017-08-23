@@ -60,7 +60,7 @@ void extracting_far_away_points (pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,
     }
   }
 
-  cloud= newCloud;
+  *cloud= *newCloud;
   
   cout<< "Cloud filtered"<< endl;
 }
