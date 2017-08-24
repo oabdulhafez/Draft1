@@ -17,9 +17,13 @@
 #include "../header/store_values_in_vector_of_maps.h"
 #include "../header/Inputs.h"
 #include "../header/UpdateMAP_saveFrame.h"
+void preliminary_check(int &expec,int &detec){
+	if (detec>expec)
+	expec=detec;
+}
 char guarantee_check(int expec,int detec){
 	float gur=float(detec)/float(expec);
-	if ((gur>=0.6)&&(expec!=1))
+	if ((gur>=1)&&(expec!=1))
 		return ('T');
 	else
 		return ('F');
@@ -156,6 +160,7 @@ int main (int argc, char** argv)
   printf("#lm\t X\t\t Y\t\t rep\t\t expected\t guarantee_factor\t status\n");
   for (int i = 0; i < landmarks.size(); ++i)
   {
+    preliminary_check(landmarks[i].expected,landmarks[i].rep);
     printf("%d)\t %.2f\t\t %.2f\t\t %d\t\t %d\t\t %.2f\t\t\t %c\n", i,
             landmarks[i].pose[0], landmarks[i].pose[1], landmarks[i].rep, landmarks[i].expected, (float(landmarks[i].rep))/(float(landmarks[i].expected)), guarantee_check(landmarks[i].expected,landmarks[i].rep));
   }
