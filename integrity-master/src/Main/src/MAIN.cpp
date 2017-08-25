@@ -23,7 +23,7 @@ void preliminary_check(int &expec,int &detec){
 }
 char guarantee_check(int expec,int detec){
 	float gur=float(detec)/float(expec);
-	if ((gur>=0.8)&&(expec!=1))
+	if ((gur>=0.75)&&(expec!=1))
 		return ('T');
 	else
 		return ('F');
